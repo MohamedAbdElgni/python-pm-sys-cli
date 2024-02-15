@@ -1,36 +1,50 @@
-
 [
-        {
-            "Fname": "mohamed",
-            "Lname": "Ahmed",
-            "Email": "mohamed@gmail.com",
-            "Password": "1234",
-            "Phone": "01098557840",
-            "Projects":[
-                {
-                    "Title": "project1",
-                    "Details": "project1 details",
-                    "Totaltarget": "1000 EGP",
-                    "Startdate": "1/1/2020",
-                    "Enddate": "1/2/2020"
-                }
-            ]
-        },
-        {
-            "Fname": "Aii",
-            "Lname": "Hassan",
-            "Email": "ali@gmail.com",
-            "Password": "1234",
-            "Phone": "01198557840",
-            "Projects":[
-                {
-                    "Title": "project2",
-                    "Details": "project2 details",
-                    "Totaltarget": "2000 EGP",
-                    "Startdate": "1/1/2020",
-                    "Enddate": "1/2/2020"
-                }
-            ]
-        }
+    {
+        "Fname": "mohamed",
+        "Lname": "ahmed",
+        "Email": "mohamed@gmail.com",
+        "Password": "1234",
+        "Phone": "01098557840",
+        "Projects": [
+            {
+                "Title": "project1",
+                "Details": "project1 details",
+                "Totaltarget": "1000 EGP",
+                "Startdate": "1/1/2020",
+                "Enddate": "1/2/2020"
+            }
+        ]
+    },
+    {
+        "Fname": "aii",
+        "Lname": "assan",
+        "Email": "ali@gmail.com",
+        "Password": "1234",
+        "Phone": "01198557840",
+        "Projects": [
+            {
+                "Title": "project2",
+                "Details": "project2 details",
+                "Totaltarget": "2000 EGP",
+                "Startdate": "1/1/2020",
+                "Enddate": "1/2/2020"
+            }
+        ]
+    },
+    {
+        "Fname": "ali",
+        "Lname": "ahmed",
+        "Email": "allll@mail.com",
+        "Password": "1234",
+        "Phone": "01098557744",
+        "Projects": []
+    },
+    {
+        "Fname": "ali",
+        "Lname": "ahmed",
+        "Email": "ali2@gmail.com",
+        "Password": "1234",
+        "Phone": "01145519047",
+        "Projects": []
+    }
 ]
-
