@@ -1,5 +1,6 @@
 import json
 import re
+import date
 data_path='data.json'
 
 
@@ -140,3 +141,33 @@ def login_user():
         login_user()
 
 
+
+def ask_prog_name():
+    while True:
+        prog_name = input("Enter your project name: ")
+        if not re.fullmatch("^[a-zA-Z]{3,15}$", prog_name.lower()):
+            print ("Please enter a valid project name.")
+        else:
+            return prog_name.lower()
+        
+
+def ask_prog_details():
+    while True:
+        prog_details = input("Enter your project details: ")
+        if not re.fullmatch("^[a-zA-Z0-9]{5,25}$", prog_details.lower()):
+            print ("Please enter a valid project details.")
+        else:
+            return prog_details.lower()
+        
+
+def ask_prog_target():
+    while True:
+        prog_target = input("Enter your project target: ")
+        if not re.fullmatch("^[0-9]{3,5}$", prog_target):
+            print ("Please enter a valid project target.")
+        else:
+            return f"{prog_target} EGP"
+        
+
+def ask_prog_date():
+    pass
