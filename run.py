@@ -1,6 +1,6 @@
-from validation import regester_new_user ,login_user
+from validation import regester_new_user ,login_user,del_project,update_project
 from menu_helpers import helper_sec_menu,helper_first_menu
-from pro_helpers import view_all_projects,clear
+from pro_helpers import view_all_projects,clear,create_project
 
 
 
@@ -8,25 +8,26 @@ from pro_helpers import view_all_projects,clear
 def run_sec_menu(result):
     while True:
         choice = helper_sec_menu(result)
-        
+
         if choice == "1":
+            clear()
             view_all_projects(result)
             clear()
-            run_sec_menu(result)
-            break
         elif choice == "2":
-            pass
+            clear()
+            create_project(result)
+            clear()
         elif choice == "3":
-            pass
+            clear()
+            del_project(result)
+            clear()
         elif choice == "4":
-            pass
+            clear()
+            update_project(result)
+            clear()
         elif choice == "5":
             clear()
-            main()
-            break
-        elif choice == "6":
-            print("Goodbye")
-            break
+            return
         else:
             print("Invalid choice")
             continue
@@ -43,7 +44,7 @@ def main():
             if result['status']:
                 clear()
                 run_sec_menu(result)
-                break
+                
         elif choice == "3":
             print("Goodbye")
             break

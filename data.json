@@ -21,30 +21,6 @@
         "Email": "ali@gmail.com",
         "Password": "1234",
         "Phone": "01198557840",
-        "Projects": [
-            {
-                "Title": "project2",
-                "Details": "project2 details",
-                "Totaltarget": "2000 EGP",
-                "Startdate": "1/1/2020",
-                "Enddate": "1/2/2020"
-            }
-        ]
-    },
-    {
-        "Fname": "ali",
-        "Lname": "ahmed",
-        "Email": "allll@mail.com",
-        "Password": "1234",
-        "Phone": "01098557744",
-        "Projects": []
-    },
-    {
-        "Fname": "ali",
-        "Lname": "ahmed",
-        "Email": "ali2@gmail.com",
-        "Password": "1234",
-        "Phone": "01145519047",
         "Projects": []
     }
 ]

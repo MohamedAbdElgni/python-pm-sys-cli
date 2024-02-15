@@ -1,16 +1,21 @@
 import json
 import re
-import date
+from datetime import datetime
 data_path='data.json'
 
 
 #! to be enhanced
-mfile = open(data_path, 'r')
-data = json.load(mfile)
-mfile.close()
-    
-    
-print(data)
+try:
+    mfile = open(data_path, 'r')
+    mfile.close()
+except FileNotFoundError:
+    with open(data_path, 'w') as f:
+        json.dump([], f, indent=4)
+        f.close()
+
+myfile = open(data_path, 'r')
+data = json.load(myfile)    
+
 
 curr_user={
     "Fname": "",
@@ -170,4 +175,114 @@ def ask_prog_target():
         
 
 def ask_prog_date():
-    pass
+    
+    while True:
+        start_date = input("Enter your project start date (dd/mm/yyyy): ")
+        try:
+            start_date = datetime.strptime(start_date, "%d/%m/%Y")
+            break
+        except:
+            print("Please enter a valid Start date.")
+    while True:
+        end_date = input("Enter your project end date (dd/mm/yyyy): ")
+        try:
+            end_date = datetime.strptime(end_date, "%d/%m/%Y")
+            break
+        except:
+            print("Please enter a valid End date.")
+    
+    if end_date < start_date:
+        print("End date should be after start date.")
+        ask_prog_date()
+    else:
+        return {"Startdate":start_date, "Enddate":end_date}
+    
+    
+
+def del_project(result):
+    print("="*50)
+    print("=Enter project Number to Delete=".center(50))
+    print("="*50)
+    i=0
+    input_range=[]
+    if result['user']['Projects'] == []:
+        print("No Projects found")
+        return
+    while i<len(result['user']['Projects']):
+        try:
+            print(f"{i+1}- {result['user']['Projects'][i]['Title']}")
+            input_range.append(str(i+1))
+            i+=1
+        except KeyError:
+            print("No Projects")
+            return
+    
+    choice = input("Enter your choice : ")
+    if choice in input_range:
+        result['user']['Projects'].pop(int(choice)-1)
+        with open('data.json', 'w') as f:
+            json.dump(result['data'], f, indent=4)
+            f.close()
+        print("Project deleted successfully")
+    else:
+        print("Invalid choice")
+        
+    x=input("press any to continue")
+    return
+
+
+def update_project(result):
+    
+    print("="*50)
+    print("=Enter project Number to Update=".center(50))
+    print("="*50)
+    i=0
+    input_range=[]
+    if result['user']['Projects'] == []:
+        print("No Projects found")
+        x=input("press any to continue")
+        return
+    while i<len(result['user']['Projects']):
+        try:
+            print(f"{i+1}- {result['user']['Projects'][i]['Title']}")
+            input_range.append(str(i+1))
+            i+=1
+        except KeyError:
+            return
+    choice = input("Enter your choice : ")
+    if choice in input_range:
+        selected_project=result['user']['Projects'][int(choice)-1]
+        print("="*50)
+        print(f"=Update {selected_project['Title']}=".center(50))
+        print("="*50)
+        while True:
+            print("1- Update Project Name")
+            print("2- Update Project Details")
+            print("3- Update Project Target")
+            print("4- Update Project Date")
+            print("5- Back")
+            choice = input("Enter your choice : ")
+            if choice == "1":
+                selected_project['Title']=ask_prog_name()
+            elif choice == "2":
+                selected_project['Details']=ask_prog_details()
+            elif choice == "3":
+                selected_project['Target']=ask_prog_target()
+            elif choice == "4":
+                selected_project['Dates']=ask_prog_date()
+            elif choice == "5":
+                break
+            else:
+                print("Invalid choice")
+                continue
+        with open('data.json', 'w') as f:
+            json.dump(result['data'], f, indent=4)
+            f.close()
+        print("Project updated successfully")
+    else:
+        print("Invalid choice")
+    x=input("press any to continue")
+    return
+
+
+    
