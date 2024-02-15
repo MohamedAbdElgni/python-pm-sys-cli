@@ -1,7 +1,7 @@
 from validation import regester_new_user ,login_user
 from menu_helpers import helper_sec_menu,helper_first_menu
 from pro_helpers import view_all_projects,clear
-import json
+
 
 
 
@@ -33,6 +33,7 @@ def run_sec_menu(result):
 
 def main():
     while True:
+        clear()
         choice = helper_first_menu()
         
         if choice == "1":

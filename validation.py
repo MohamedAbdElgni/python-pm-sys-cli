@@ -2,9 +2,11 @@ import json
 import re
 data_path='data.json'
 
-with open(data_path, 'r') as f:
-    data = json.load(f)
-    f.close()
+
+#! to be enhanced
+mfile = open(data_path, 'r')
+data = json.load(mfile)
+mfile.close()
     
     
 print(data)
@@ -38,7 +40,7 @@ other_users_data=0
 def get_str_input(to_get="first name"):
     while True:
         str_ = input(f"Enter your {to_get.lower()}: ")
-        if not re.match("^[a-zA-Z]{3,10}$", str_.lower()):
+        if not re.fullmatch("^[a-zA-Z]{3,10}$", str_.lower()):
             print ("error")
         else:
             return str_.lower()
@@ -49,7 +51,8 @@ def get_str_input(to_get="first name"):
 def get_password_input(status="reg"):
     while True:
         password = input("Enter your password: ")
-        if not re.match("^[0-9]{3,4}$", password):
+        #! to be enhanced
+        if not re.fullmatch("^[0-9]{3,4}$", password):
             print ("error format")
         else:
             if status == "reg":
@@ -66,7 +69,8 @@ def get_email_input(status="reg"):
     
         while True:
             email = input("Enter your email: ")
-            if not re.match(r"^\S+@\S+\.\S+$", email.lower()):
+            # ! to be enhanced
+            if not re.fullmatch(r"^\S+@\S+\.\S+$", email.lower()):
                 print("Error: Invalid email format.")
             else:
                 if status == "reg":
@@ -89,8 +93,8 @@ def get_email_input(status="reg"):
 def get_phone_input():
     while True:
         phone = input("Enter your phone number: ")
-        # phone should start with 010 or 011 or 012 and have 10 digits
-        if not re.match("^(010|011|012)[0-9]{8}$", phone):
+        #  with 010 or 011 or 012
+        if not re.fullmatch("^(010|011|012)[0-9]{8}$", phone):
             print ("error format")
         elif phone in [user['Phone'] for user in data]:
             print ("phone already exist")
@@ -129,8 +133,8 @@ def login_user():
             curr_user_data["Password"]=user["Password"]
             curr_user_data["Phone"]=user["Phone"]
             curr_user_data["Projects"]=user["Projects"]
-            return {'user':curr_user, 'data':data, 'status':True, 'ops':"loged"}
-            break
+            return {'user':curr_user_data, 'data':data, 'status':True, 'ops':"loged"}
+            
     else:
         print("user not found")
         login_user()
